@@ -5,11 +5,35 @@ import { Link } from 'react-router-dom';
 
 function About(props) {
 
+    const fruitUiElements = ['apple', 'banana', 'friggen orange'].map((fruit) => {
+        return <p>Fruit: {fruit}</p>
+    })
+
     const partners = props.partners.map(partner => {
         return (
-            <h5>{partner.name}</h5>
+            <Media tag="li" key={partner.id}>
+                {RenderPartner(partner)}
+            </Media>
         );
     });
+
+function RenderPartner(partner) {
+    if (partner){
+    return(
+        <React.Fragment>
+            <Media object src={partner.image} alt={partner.name} width="150" />
+            <Media body className="ml-5 mb-4">
+                <Media heading>
+                    {partner.name}
+                </Media>
+                {partner.description}
+            </Media>
+        </React.Fragment>
+    )}
+    return(
+        <div />
+    );
+}
 
     return (
         <div className="container">
@@ -66,6 +90,7 @@ function About(props) {
                 <div className="col mt-4">
                     <Media list>
                         {partners}
+                        { fruitUiElements }
                     </Media>
                 </div>
             </div>
