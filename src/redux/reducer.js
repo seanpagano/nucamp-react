@@ -10,7 +10,7 @@ export const initialState = {
     promotions: PROMOTIONS
 };
 
-export const Reducer = {state = initialState, action} => {
+export const Reducer = (state = initialState, action) => {
     return state;
 };
 
